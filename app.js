@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let mongoose = require('mongoose');
 
-require('./lib/crawler')
+require('dotenv').config()
+// require('./lib/crawler')
+require('./lib/telegramBot')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
