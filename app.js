@@ -3,9 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let mongoose = require('mongoose');
+
+require('./lib/crawler')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+// koneksi mongo
+const mongoUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017/dinusCrawl'
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoUrl, { useNewUrlParser: true }, function (err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('mongo connected', mongoUrl)
+  }
+});
 
 var app = express();
 
