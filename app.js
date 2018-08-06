@@ -7,11 +7,13 @@ const mongoose = require('mongoose');
 
 require('dotenv').config()
 
+// handle bot telegram
 const bot = require('./lib/telegramBot')
 require('./chat/onStartServer')(bot)
 require('./chat/responsePersonal')(bot)
 
-require('./lib/crawler')
+// job schedule
+require('./lib/agenda.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
