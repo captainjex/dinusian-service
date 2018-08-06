@@ -29,7 +29,11 @@ module.exports = function (agenda) {
                 if (doc) {
                   console.log('berhasil update', doc.title);
                 } else {
-                  let message = 'Pengumuman Baru :\n' + element.judul + '\nCek siadin bro..'
+                  let message = 'Pengumuman Baru :\n'
+                                + element.judul
+                                + '\n\n'
+                                + element.info
+                                + '\n\nCek siadin bro..'
                   broadcastChannel(bot, message)
                   console.log('berhasil upsert baru', element.judul);
                 }
