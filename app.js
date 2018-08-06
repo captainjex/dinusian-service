@@ -8,8 +8,9 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 const bot = require('./lib/telegramBot')
-// require('./lib/crawler')
 require('./chat/onStartServer')(bot)
+require('./chat/responsePersonal')(bot)
+// require('./lib/crawler')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
