@@ -5,6 +5,14 @@ const broadcastChannel = require('../chat/broadcastChannel')
 
 const announcementSize = 20
 
+function sendFortuneCookie () {
+  axios.get('http://fortunecookieapi.herokuapp.com/v1/cookie').then(response => {
+    let quote = response.data[0].fortune.message
+    let lesson = response.data[0].lesson.english
+    broadcastChannel(bot, quote + '\n\n' + lesson )
+  })
+}
+
 module.exports = function (agenda) {
   agenda.define('get announcement', (job, done) => {
     console.log('>> mulai crawling...');
@@ -40,6 +48,7 @@ module.exports = function (agenda) {
               }
             })
         });
+        sendFortuneCookie()
         done()
       })
       .catch(function (error) {
