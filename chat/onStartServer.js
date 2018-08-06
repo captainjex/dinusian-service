@@ -1,5 +1,5 @@
 module.exports = function(bot) {
-  bot.sendMessage(216204685, 'bot restarted').then((res) => {
+  bot.sendMessage(process.env.ADMIN_CHAT_ID, 'bot restarted').then((res) => {
     console.log('bot restarted');
   })
 }
