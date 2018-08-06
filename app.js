@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 require('dotenv').config()
+
+const bot = require('./lib/telegramBot')
 // require('./lib/crawler')
-require('./lib/telegramBot')
+require('./chat/onStartServer')(bot)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
