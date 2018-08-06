@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('dinusian-crawler:server');
+var debug = require('debug')('dinusian-service:server');
 var http = require('http');
 
 /**

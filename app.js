@@ -19,7 +19,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // koneksi mongo
-const mongoUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017/dinusCrawl'
+const mongoUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017/dinusian'
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, { useNewUrlParser: true }, function (err) {
   if (err) {

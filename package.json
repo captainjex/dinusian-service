@@ -1,5 +1,5 @@
 {
-  "name": "dinusian-crawler",
+  "name": "dinusian-service",
   "version": "0.0.0",
   "private": true,
   "scripts": {
