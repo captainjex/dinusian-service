@@ -9,7 +9,7 @@ function sendFortuneCookie () {
   axios.get('http://fortunecookieapi.herokuapp.com/v1/cookie').then(response => {
     let quote = response.data[0].fortune.message
     let lesson = response.data[0].lesson.english
-    broadcastChannel(bot, quote + '\n\n' + lesson )
+    broadcastChannel(bot, quote + '\n\n')
   })
 }
 
@@ -29,24 +29,24 @@ module.exports = function (agenda) {
             timeSent: element.waktu_kirim,
             progdi: element.progdi,
           }, {
-              upsert: true
-            }, function (err, doc) {
-              if (err) {
-                console.log('err', err);
+            upsert: true
+          }, function (err, doc) {
+            if (err) {
+              console.log('err', err);
+            } else {
+              if (doc) {
+                console.log('berhasil update', doc.title);
               } else {
-                if (doc) {
-                  console.log('berhasil update', doc.title);
-                } else {
-                  let message = 'Pengumuman Baru :\n'
-                                + element.judul
-                                + '\n\n'
-                                + element.info
-                                + '\n\nCek siadin bro..'
-                  broadcastChannel(bot, message)
-                  console.log('berhasil upsert baru', element.judul);
-                }
+                let message = 'Pengumuman Baru :\n'
+                              + element.judul
+                              + '\n\n'
+                              + element.info
+                              + '\n\nCek siadin bro..'
+                broadcastChannel(bot, message)
+                console.log('berhasil upsert baru', element.judul);
               }
-            })
+            }
+          })
         });
         sendFortuneCookie()
         done()
