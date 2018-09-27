@@ -7,8 +7,9 @@ module.exports = function (agenda) {
     try {
       let birthdayData = await getBirthdayData()
       if (birthdayData.length > 0) {
-        broadcastChannel(bot, 'Selamat Ulang Tahun ^_^')
+        broadcastChannel(bot, 'Ciyee ulang tahun nih ^_^')
         birthdayData.forEach(element => {
+          if (element.nim[0] != 'A') return // ngefilter cuma nim yang depannya A
           let message = element.name + '\n'
             + element.nim + '\n'
             + element.age + ' tahun' + '\n'
