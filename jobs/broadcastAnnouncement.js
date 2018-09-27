@@ -14,7 +14,7 @@ function sendFortuneCookie () {
 }
 
 module.exports = function (agenda) {
-  agenda.define('get announcement', (job, done) => {
+  agenda.define('broadcast announcement', (job, done) => {
     console.log('>> mulai crawling...');
     axios.get(process.env.URL_ANNOUNCEMENT + '/0/' + announcementSize)
       .then(function (response) {
