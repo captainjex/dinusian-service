@@ -1,5 +1,5 @@
 module.exports = function (bot) {
-  const trigger = 'lihat';
+  const trigger = 'Pengumuman Akademik';
 
   bot.on('message', (msg) => {
     console.log('>> chat telegram dari', msg.chat.username, ':', msg.text);
