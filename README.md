@@ -11,7 +11,13 @@
 - `npm install`
 - `cp .env.example .env`
 - edit `.env` sesuaikan setting environment
-- run for dev : `npm run dev` or `npm start` if you prefer not use nodemon
+- run `npm start`
+
+# Deploy
+- dont forget timezone. because we are using cron job
+  - check time now `date`
+  - check timezone `more /etc/timezone`
+  - set timezone. for example we use Asia/Jakarta `sudo timedatectl set-timezone Asia/Jakarta`
 - run for prod : `pm2 start ./bin/www --name dinusian-service` (if you want to use pm2)
 
 # Pake docker
