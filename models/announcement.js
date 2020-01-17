@@ -1,6 +1,6 @@
-let mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-let announcementSchema = new mongoose.Schema({
+const announcementSchema = new mongoose.Schema({
   announceId: String,
   title: String,
   info: String,
@@ -11,4 +11,4 @@ let announcementSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model("Announcement", announcementSchema);
+module.exports = mongoose.model('Announcement', announcementSchema);

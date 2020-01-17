@@ -1,26 +1,26 @@
-var axios = require('axios');
-var cheerio = require('cheerio');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-async function getBirthdayData () {
-  let {
+async function getBirthdayData() {
+  const {
     data: body
-  } = await axios.get("https://dinus.ac.id/student")
+  } = await axios.get('https://dinus.ac.id/student');
 
   const $ = cheerio.load(body);
-  let birthdayData = []
+  const birthdayData = [];
 
   $('#tableDataultah > tbody > tr').each(function () {
-    const name = $(this).find('td .ultah').attr('data-nama')
-    const nim = $(this).find('td .ultah').attr('data-nim')
-    const age = $(this).find('td .ultah').attr('data-usia')
-    const photoUrl = $(this).find('td .ultah').attr('data-foto')
+    const name = $(this).find('td .ultah').attr('data-nama');
+    const nim = $(this).find('td .ultah').attr('data-nim');
+    const age = $(this).find('td .ultah').attr('data-usia');
+    const photoUrl = $(this).find('td .ultah').attr('data-foto');
 
-    birthdayData.push({ name, nim, age, photoUrl })
+    birthdayData.push({ name, nim, age, photoUrl });
   });
 
-  return birthdayData
+  return birthdayData;
 }
 
 module.exports = {
   getBirthdayData
-}
+};
