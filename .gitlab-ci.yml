@@ -1,0 +1,27 @@
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+variables:
+  GIT_CLEAN_FLAGS: none
+
+before_script:
+    - export NVM_DIR="$HOME/.nvm"
+    - . ${NVM_DIR}/nvm.sh
+    - nvm use 10
+    - npm install
+
+stages:
+  - deploy
+
+deploy_dev:
+  stage: deploy
+  tags:
+    - dinusian-service
+  script:
+    - echo "Deploy to staging (dev) server"
+    # - sed -i 's/PORT=4000/PORT=3000/g' .env
+    - pm2 start ecosystem.config.js
+  only:
+    - master
