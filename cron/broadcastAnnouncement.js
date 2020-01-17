@@ -31,7 +31,7 @@ const startProcessDataAnnouncements = async () => {
 
 
 const defineJob = async (job, done) => {
-  console.log('>> mulai crawling...');
+  console.log('>> mulai scrapping...');
   try {
     const results = await startProcessDataAnnouncements();
     const newItems = results.filter(item => !item); // new inserted item will result null
