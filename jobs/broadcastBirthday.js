@@ -1,5 +1,5 @@
 const bot = require('../lib/telegramBot');
-const { getBirthdayData } = require('../factory/birthday');
+const { getBirthdayData } = require('../services/dinusweb');
 const broadcastChannel = require('../chat/broadcastChannel');
 
 module.exports = (agenda) => {

@@ -2,9 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 async function getBirthdayData() {
-  const {
-    data: body
-  } = await axios.get('https://dinus.ac.id/student');
+  const { data: body } = await axios.get('https://dinus.ac.id/student');
 
   const $ = cheerio.load(body);
   const birthdayData = [];
