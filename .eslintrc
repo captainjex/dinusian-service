@@ -5,7 +5,6 @@
     "mocha": true,
     "es6": true
   },
-  "plugins": ["chai-friendly"],
   "rules": {
     "arrow-parens": 0,
     "comma-dangle": 0,
@@ -21,6 +20,5 @@
     "no-unused-expressions": 0,
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "object-curly-newline": 0,
-    "chai-friendly/no-unused-expressions": 2
   }
 }
