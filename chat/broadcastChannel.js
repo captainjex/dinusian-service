@@ -1,4 +1,4 @@
-const bot = require('../lib/telegramBot');
+const bot = require('./__bot');
 
 module.exports = (message) => {
   bot.sendMessage(process.env.NODE_ENV === 'development' ? '@devdinusian' : '@dinusian', message).then(() => {

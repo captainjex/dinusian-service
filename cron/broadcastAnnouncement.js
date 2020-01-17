@@ -1,7 +1,7 @@
 const axios = require('axios');
 const dinusweb = require('../services/dinusweb');
 const Announcement = require('../models/announcement');
-const broadcastChannel = require('../chat/broadcastChannel');
+const chat = require('../chat');
 
 
 // eslint-disable-next-line no-unused-vars
@@ -40,11 +40,11 @@ const defineJob = async (job, done) => {
         const message = `Pengumuman Baru :
                             \n${item.title}
                             \n\nCek ${item.rawUrl}`;
-        broadcastChannel(message);
+        chat.broadcastChannel(message);
       });
     } else {
       const quote = await getFortuneCookie();
-      broadcastChannel(quote);
+      chat.broadcastChannel(quote);
     }
     done();
   } catch (error) {

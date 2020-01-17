@@ -4,12 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const chat = require('./chat');
 
 require('dotenv').config();
 
-// handle bot telegram
-require('./chat/onStartServer')();
-require('./chat/responsePersonal')();
+// turn on bot telegram
+chat.onStartServer();
+chat.responsePersonal();
 
 // job schedule
 require('./cron/index.js');
