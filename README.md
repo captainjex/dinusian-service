@@ -1,4 +1,11 @@
-# Dinusian service by wkwkmbuh
+# Dinusian service by @gaspadat
+
+# Todo
+- [x] scrapper pengumuman
+- [x] bot telegram broadcast channel
+- [x] cronjob scrap pengumuman & broadcast channel
+- [ ] halaman web baca pengumuman (telegram instant page)
+
 
 # requirement
 - node v8
