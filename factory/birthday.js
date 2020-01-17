@@ -9,7 +9,7 @@ async function getBirthdayData() {
   const $ = cheerio.load(body);
   const birthdayData = [];
 
-  $('#tableDataultah > tbody > tr').each(function () {
+  $('#tableDataultah > tbody > tr').each(() => {
     const name = $(this).find('td .ultah').attr('data-nama');
     const nim = $(this).find('td .ultah').attr('data-nim');
     const age = $(this).find('td .ultah').attr('data-usia');

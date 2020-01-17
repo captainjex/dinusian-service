@@ -1,4 +1,4 @@
-module.exports = function (bot) {
+module.exports = (bot) => {
   const trigger = 'Pengumuman Akademik';
 
   bot.on('message', (msg) => {

@@ -8,12 +8,11 @@ const announcementSize = 20;
 function sendFortuneCookie() {
   axios.get('http://fortunecookieapi.herokuapp.com/v1/cookie').then(response => {
     const quote = response.data[0].fortune.message;
-    const lesson = response.data[0].lesson.english;
     broadcastChannel(bot, `${quote}\n\n`);
   });
 }
 
-module.exports = function (agenda) {
+module.exports = (agenda) => {
   agenda.define('broadcast announcement', (job, done) => {
     console.log('>> mulai crawling...');
     axios.get(`${process.env.URL_ANNOUNCEMENT}/0/${announcementSize}`)
@@ -36,11 +35,10 @@ module.exports = function (agenda) {
             } else if (doc) {
               console.log('berhasil update', doc.title);
             } else {
-              const message = `Pengumuman Baru :\n${
-                element.judul
-              }\n\n${
-                element.info
-              }\n\nCek siadin bro..`;
+              const message = `Pengumuman Baru :\n
+              ${element.judul}
+              \n\n${element.info}
+              \n\nCek siadin bro..`;
               broadcastChannel(bot, message);
               console.log('berhasil upsert baru', element.judul);
             }
