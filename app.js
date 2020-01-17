@@ -8,12 +8,11 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // handle bot telegram
-const bot = require('./lib/telegramBot');
-require('./chat/onStartServer')(bot);
-require('./chat/responsePersonal')(bot);
+require('./chat/onStartServer')();
+require('./chat/responsePersonal')();
 
 // job schedule
-require('./lib/agenda.js');
+require('./cron/index.js');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

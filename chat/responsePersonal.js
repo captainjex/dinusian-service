@@ -1,4 +1,6 @@
-module.exports = (bot) => {
+const bot = require('../lib/telegramBot');
+
+module.exports = () => {
   const trigger = 'Pengumuman Akademik';
 
   bot.on('message', (msg) => {

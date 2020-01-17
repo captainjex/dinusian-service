@@ -1,7 +1,6 @@
 const Agenda = require('agenda');
 
-const broadcastAnnouncement = require('../jobs/broadcastAnnouncement');
-const broadcastBirthday = require('../jobs/broadcastBirthday');
+const broadcastAnnouncement = require('./broadcastAnnouncement');
 
 const mongoString = process.env.MONGO_STRING || 'mongodb://127.0.0.1:27017/dinusian';
 const agenda = new Agenda({ db: { address: mongoString, collection: 'agendaJobs' } });
@@ -12,12 +11,11 @@ agenda.maxConcurrency(5);
 agenda.lockLimit(5);
 agenda.defaultLockLimit(5);
 
-broadcastAnnouncement(agenda);
-broadcastBirthday(agenda);
+
+agenda.define('broadcast announcement', broadcastAnnouncement);
 
 agenda.start().then(() => {
-  agenda.every('5 9,12,15,18 * * *', 'broadcast announcement', {}, { timezone: 'Asia/Jakarta' });
-  agenda.every('1 0 * * *', 'broadcast birthday', {}, { timezone: 'Asia/Jakarta' });
+  agenda.every('5 9,11,13,15,17,19 * * *', 'broadcast announcement', {}, { timezone: 'Asia/Jakarta' });
 });
 
 module.exports = agenda;

@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
 const announcementSchema = new mongoose.Schema({
-  announceId: String,
+  content: String,
   title: String,
-  info: String,
-  sender: String,
-  timeSent: String,
-  progdi: String,
+  createdBy: String,
+  rawUrl: String,
+  rawId: String,
 }, {
   timestamps: true
 });
