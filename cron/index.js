@@ -16,7 +16,7 @@ agenda.defaultLockLimit(5);
 agenda.define('scrap announcement', scrapAnnouncement);
 
 agenda.start().then(() => {
-  agenda.now('scrap announcement');
+  // agenda.now('scrap announcement'); // uncomment for local development only
   agenda.every('5 8,11,14,17,20 * * *', 'scrap announcement', {}, { timezone: 'Asia/Jakarta' });
 });
 
