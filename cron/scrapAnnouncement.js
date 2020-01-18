@@ -38,7 +38,7 @@ const defineJob = async (job, done) => {
     if (newItems.length > 0) {
       newItems.forEach(item => {
         const message = `Pengumuman
-                        *\n${item.title}* \nCek ${item.rawUrl}`;
+                        *\n${item.title}* \n[Selengkapnya](${item.rawUrl})`;
         chat.broadcastChannel(message);
       });
     } else {
