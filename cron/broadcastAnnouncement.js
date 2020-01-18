@@ -26,7 +26,7 @@ const startProcessDataAnnouncements = async () => {
     .map(item => Announcement.findOneAndUpdate({ rawId: item.rawId }, item, { upsert: true }));
   const results = await Promise.all(promiseUpdates);
 
-  return results;
+  return results.map((r, idx) => r || announcements[idx]); // the new inserted  announcement result null
 };
 
 
@@ -34,12 +34,11 @@ const defineJob = async (job, done) => {
   console.log('>> mulai scrapping...');
   try {
     const results = await startProcessDataAnnouncements();
-    const newItems = results.filter(item => !item); // new inserted item will result null
+    const newItems = results.filter(item => !item.id); // the new inserted doesn't have id
     if (newItems.length > 0) {
       newItems.forEach(item => {
-        const message = `Pengumuman Baru :
-                            \n${item.title}
-                            \n\nCek ${item.rawUrl}`;
+        const message = `Pengumuman
+                        *\n${item.title}* \nCek ${item.rawUrl}`;
         chat.broadcastChannel(message);
       });
     } else {
