@@ -16,6 +16,7 @@ agenda.defaultLockLimit(5);
 agenda.define('broadcast announcement', broadcastAnnouncement);
 
 agenda.start().then(() => {
+  agenda.now('broadcast announcement');
   agenda.every('5 8,11,14,17,20 * * *', 'broadcast announcement', {}, { timezone: 'Asia/Jakarta' });
 });
 
