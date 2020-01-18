@@ -1,4 +1,4 @@
-# Dinusian service oleh @gaspadat
+# Dinusian service [![Build Status](https://travis-ci.com/gaspadat/dinusian-service.svg?branch=master)](https://travis-ci.com/gaspadat/dinusian-service)
 
 > Pengisi kanal https://t.me/dinusian
 
@@ -37,8 +37,8 @@ misal `nano /path/to/env/dinusian-service.env`
 
 Build image dari repo ini
 
-`docker build https://github.com/wkwksama/dinusian-service.git -t wkwksama/dinusian-service`
+`docker build https://github.com/gaspadat/dinusian-service.git -t gaspadat/dinusian-service`
 
 Jalankan, file env pake volume
 
-`docker run --name dinusian-service --link mongodb:mongodb -v /path/to/env/dinusian-service.env:/app/.env -d wkwksama/dinusian-service`
+`docker run --name dinusian-service --link mongodb:mongodb -v /path/to/env/dinusian-service.env:/app/.env -d gaspadat/dinusian-service`
