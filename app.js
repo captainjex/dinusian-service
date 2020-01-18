@@ -5,8 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const chat = require('./chat');
+const config = require('./config');
 
-require('dotenv').config();
 
 // turn on bot telegram
 chat.onStartServer();
@@ -19,7 +19,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 // koneksi mongo
-const mongoUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017/dinusian';
+const mongoUrl = config.MONGO_STRING;
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, { useNewUrlParser: true }, (err) => {
   if (err) {

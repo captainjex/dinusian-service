@@ -1,7 +1,8 @@
 const bot = require('./__bot');
+const config = require('../config');
 
 module.exports = (message) => {
-  bot.sendMessage(process.env.NODE_ENV === 'development' ? '@devdinusian' : '@dinusian', message).then(() => {
+  bot.sendMessage(config.NODE_ENV === 'development' ? '@devdinusian' : '@dinusian', message).then(() => {
     console.log('sent broadcast telegram channel');
   });
 };

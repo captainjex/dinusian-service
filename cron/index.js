@@ -1,8 +1,9 @@
 const Agenda = require('agenda');
-
+const config = require('../config');
 const broadcastAnnouncement = require('./broadcastAnnouncement');
 
-const mongoString = process.env.MONGO_STRING || 'mongodb://127.0.0.1:27017/dinusian';
+
+const mongoString = config.MONGO_STRING;
 const agenda = new Agenda({ db: { address: mongoString, collection: 'agendaJobs' } });
 
 // agenda.processEvery('10 seconds') // for testing
