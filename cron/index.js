@@ -1,6 +1,6 @@
 const Agenda = require('agenda');
 const config = require('../config');
-const broadcastAnnouncement = require('./broadcastAnnouncement');
+const scrapAnnouncement = require('./scrapAnnouncement');
 
 
 const mongoString = config.MONGO_STRING;
@@ -13,11 +13,11 @@ agenda.lockLimit(5);
 agenda.defaultLockLimit(5);
 
 
-agenda.define('broadcast announcement', broadcastAnnouncement);
+agenda.define('scrap announcement', scrapAnnouncement);
 
 agenda.start().then(() => {
-  agenda.now('broadcast announcement');
-  agenda.every('5 8,11,14,17,20 * * *', 'broadcast announcement', {}, { timezone: 'Asia/Jakarta' });
+  agenda.now('scrap announcement');
+  agenda.every('5 8,11,14,17,20 * * *', 'scrap announcement', {}, { timezone: 'Asia/Jakarta' });
 });
 
 module.exports = agenda;

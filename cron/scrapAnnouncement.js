@@ -31,7 +31,7 @@ const startProcessDataAnnouncements = async () => {
 
 
 const defineJob = async (job, done) => {
-  console.log('>> mulai scrapping...');
+  console.log('>> mulai scrapping data pengumuman...');
   try {
     const results = await startProcessDataAnnouncements();
     const newItems = results.filter(item => !item.id); // the new inserted doesn't have id
@@ -43,7 +43,7 @@ const defineJob = async (job, done) => {
       });
     } else {
       const quote = await getFortuneCookie();
-      chat.broadcastChannel(quote);
+      chat.broadcastChannel(`"${quote}"`);
     }
     done();
   } catch (error) {
