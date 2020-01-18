@@ -1,40 +1,44 @@
-# Dinusian service by @gaspadat
+# Dinusian service oleh @gaspadat
 
-# Todo
+> Pengisi kanal https://t.me/dinusian
+
+---
+
+# Development Todo
 - [x] scrapper pengumuman
 - [x] bot telegram broadcast channel
 - [x] cronjob scrap pengumuman & broadcast channel
 - [ ] halaman web baca pengumuman (telegram instant page)
 
 
-# requirement
+# Requirement
 - node v8
 - mongo 3.6
-- nodemon for development `npm i -g nodemon` (optional)
-- pm2 for production `npm i -g pm2` (you can use other process manager up to you)
+- nodemon untuk development `npm i -g nodemon` (opsional)
+- pm2 untuk production `npm i -g pm2` (bisa pakai process manajer lain terserah)
 
 # How to run
-- clone this repo
+- clone repo ini
 - `npm install`
 - `cp .env.example .env`
 - edit `.env` sesuaikan setting environment
 - run `npm start`
 
 # Deploy
-- dont forget timezone. because we are using cron job
-  - check time now `date`
-  - check timezone `more /etc/timezone`
-  - set timezone. for example we use Asia/Jakarta `sudo timedatectl set-timezone Asia/Jakarta`
-- run for prod : `pm2 start ./bin/www --name dinusian-service` (if you want to use pm2)
+- Jangan lupa timezone. Karena ini menggukanan crob job
+  - Cek time now `date`
+  - Cek timezone `more /etc/timezone`
+  - Set timezone. Contoh Asia/Jakarta `sudo timedatectl set-timezone Asia/Jakarta`
+- Run for prod : `pm2 start ./bin/www --name dinusian-service` (if you want to use pm2)
 
 # Pake docker
-buat dulu file env. contoh di `.env.example`.
+Buat dulu file env. contoh di `.env.example`.
 misal `nano /path/to/env/dinusian-service.env`
 
-build image dari repo ini
+Build image dari repo ini
 
 `docker build https://github.com/wkwksama/dinusian-service.git -t wkwksama/dinusian-service`
 
-jalankan, file env pake volume
+Jalankan, file env pake volume
 
 `docker run --name dinusian-service --link mongodb:mongodb -v /path/to/env/dinusian-service.env:/app/.env -d wkwksama/dinusian-service`
