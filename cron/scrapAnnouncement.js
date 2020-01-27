@@ -1,15 +1,6 @@
-const axios = require('axios');
 const dinusweb = require('../services/dinusweb');
 const Announcement = require('../models/announcement');
 const chat = require('../chat');
-
-
-// eslint-disable-next-line no-unused-vars
-const getFortuneCookie = async () => {
-  const response = await axios.get('http://fortunecookieapi.herokuapp.com/v1/cookie');
-  const quote = response.data[0].fortune.message;
-  return quote;
-};
 
 
 const startProcessDataAnnouncements = async () => {
@@ -30,7 +21,7 @@ const startProcessDataAnnouncements = async () => {
 };
 
 
-const defineJob = async (job, done) => {
+module.exports = async (job, done) => {
   console.log('>> mulai scrapping data pengumuman...');
   try {
     const results = await startProcessDataAnnouncements();
@@ -41,9 +32,6 @@ const defineJob = async (job, done) => {
                         *\n${item.title}* \n[Selengkapnya](${item.rawUrl})`;
         chat.broadcastChannel(message);
       });
-    } else {
-      const quote = await getFortuneCookie();
-      chat.broadcastChannel(`"${quote}"`);
     }
     done();
   } catch (error) {
@@ -51,6 +39,3 @@ const defineJob = async (job, done) => {
     done(error);
   }
 };
-
-
-module.exports = defineJob;
