@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   if (!isValidKey) {
     return res.send({
       error: true,
-      message: 'INVALID KEY'
+      message: `INVALID KEY : ${req.query.key}`
     });
   }
 
@@ -30,7 +30,7 @@ module.exports = (req, res) => {
     default:
       return res.send({
         error: true,
-        message: 'ERR NO ACTION'
+        message: `ACTION NOT RECOGNIZED : ${req.query.action}`
       });
   }
 };
