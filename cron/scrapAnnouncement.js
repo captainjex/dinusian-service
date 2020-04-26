@@ -1,4 +1,4 @@
-const dinusweb = require('../services/dinusweb');
+const dinusweb = require('../lib/services/dinusweb');
 const Announcement = require('../models/announcement');
 const chat = require('../chat');
 
