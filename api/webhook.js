@@ -28,6 +28,9 @@ module.exports = (req, res) => {
       });
       break;
     default:
-      break;
+      return res.send({
+        error: true,
+        message: 'ERR NO ACTION'
+      });
   }
 };
